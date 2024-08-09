@@ -40,11 +40,13 @@ INSTALLED_APPS = [
     'ninja_extra',
     'ninja_jwt',
     'waitlists',
+    'corsheaders',
      
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',  # Added missing comma
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -52,7 +54,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'home.urls'
+
+CROS_URL_REGEX=r"^/api/.*$"
+CORS_ALLOWED_ORIGINS=[
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',    
+]
 
 TEMPLATES = [
     {
